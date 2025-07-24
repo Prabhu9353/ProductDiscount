@@ -25,6 +25,8 @@ module.exports = class ProductCatalog extends cds.ApplicationService { init() {
     
     console.log('On applyDiscount', req.data)
     console.log('On applyDiscount', req.data)
+    console.log('On applyDiscount', req.data)
+    console.log('On applyDiscount', req.data)
   })
 
 
