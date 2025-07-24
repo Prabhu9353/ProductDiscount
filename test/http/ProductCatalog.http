@@ -1,0 +1,55 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### ProductSet
+# @name ProductSet_GET
+GET {{server}}/odata/v4/product-catalog/ProductSet
+Authorization: Basic {{username}}:{{password}}
+
+
+### ProductSet
+# @name ProductSet_POST
+POST {{server}}/odata/v4/product-catalog/ProductSet
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "48995639-b4b6-4734-8773-d5f4738d0929",
+  "Name": "me-4899563",
+  "Price": 27655.33,
+  "Category": "Category-4899563"
+}
+
+
+### ProductSet
+# @name ProductSet_PATCH
+PATCH {{server}}/odata/v4/product-catalog/ProductSet/48995639-b4b6-4734-8773-d5f4738d0929
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "48995639-b4b6-4734-8773-d5f4738d0929",
+  "Name": "me-4899563",
+  "Price": 27655.33,
+  "Category": "Category-4899563"
+}
+
+
+### ProductSet
+# @name ProductSet_DELETE
+DELETE {{server}}/odata/v4/product-catalog/ProductSet/48995639-b4b6-4734-8773-d5f4738d0929
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### applyDiscount
+# @name applyDiscount_POST
+POST {{server}}/odata/v4/product-catalog/applyDiscount
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "14004316-4f96-44ff-a879-414eb7696d7b"
+}

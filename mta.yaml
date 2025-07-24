@@ -1,0 +1,38 @@
+_schema-version: 3.3.0
+ID: ProdcutInfo
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+modules:
+  - name: ProdcutInfo-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      instances: 1
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm-ci
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: ProdcutInfo-auth
+
+resources:
+  - name: ProdcutInfo-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: ProdcutInfo-${org}-${space}
+        tenant-mode: dedicated
