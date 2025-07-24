@@ -24,6 +24,7 @@ module.exports = class ProductCatalog extends cds.ApplicationService { init() {
     return `Discount applied. New price is ${newprice.toFixed(2)}`; 
     
     console.log('On applyDiscount', req.data)
+    console.log('On applyDiscount', req.data)
   })
 
 
